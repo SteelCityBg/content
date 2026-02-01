@@ -7,5 +7,6 @@ export const question = defineType({
   fields: [
     defineField({ name: 'question', type: 'string' }),
     defineField({ name: 'answer', type: 'string' }),
+    defineField({ name: 'order', type: 'number', initialValue: 0 }),
   ],
 })
