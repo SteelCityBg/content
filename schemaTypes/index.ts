@@ -1,3 +1,5 @@
-import {question} from "./question";
+import {faq} from "./faq";
+import {venue} from './venue'
+import {event} from './event'
 
-export const schemaTypes = [question]
+export const schemaTypes = [event, faq, venue]
