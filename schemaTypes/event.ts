@@ -29,6 +29,10 @@ export const event = defineType({
     defineField({name: 'location', type: 'reference', to: [{type: 'venue'}]}),
     defineField({
       name: 'description',
+      type: 'string',
+    }),
+    defineField({
+      name: 'richText',
       type: 'array',
       of: [
         {type: 'block'},

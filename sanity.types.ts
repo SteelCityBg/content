@@ -13,15 +13,140 @@
  */
 
 // Source: schema.json
-export type Question = {
+export type SanityImageAssetReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
+
+export type VenueSearch = {
   _id: string
-  _type: 'question'
+  _type: 'venueSearch'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  headline?: string
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+        listItem?: 'bullet' | 'number'
+        markDefs?: Array<{
+          href?: string
+          _type: 'link'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }
+    | {
+        asset?: SanityImageAssetReference
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        _type: 'image'
+        _key: string
+      }
+  >
+  formPlaceholder?: string
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
+
+export type Faq = {
+  _id: string
+  _type: 'faq'
   _createdAt: string
   _updatedAt: string
   _rev: string
   question?: string
   answer?: string
   order?: number
+}
+
+export type VenueReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'venue'
+}
+
+export type Event = {
+  _id: string
+  _type: 'event'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: string
+  eventType?: 'social' | 'tournament' | 'seminar'
+  date?: string
+  location?: VenueReference
+  description?: string
+  richText?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+        listItem?: 'bullet' | 'number'
+        markDefs?: Array<{
+          href?: string
+          _type: 'link'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }
+    | {
+        asset?: SanityImageAssetReference
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        _type: 'image'
+        _key: string
+      }
+  >
+}
+
+export type Venue = {
+  _id: string
+  _type: 'venue'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  shortName?: string
+  displayName?: string
+  address?: string
+  city?: string
+  state?: string
+  zip?: string
+  map?: string
+  website?: string
 }
 
 export type SanityImagePaletteSwatch = {
@@ -60,22 +185,6 @@ export type SanityImageMetadata = {
   thumbHash?: string
   hasAlpha?: boolean
   isOpaque?: boolean
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
 }
 
 export type SanityFileAsset = {
@@ -144,13 +253,18 @@ export type Slug = {
 }
 
 export type AllSanitySchemaTypes =
-  | Question
+  | SanityImageAssetReference
+  | VenueSearch
+  | SanityImageCrop
+  | SanityImageHotspot
+  | Faq
+  | VenueReference
+  | Event
+  | Venue
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
   | SanityImageMetadata
-  | SanityImageHotspot
-  | SanityImageCrop
   | SanityFileAsset
   | SanityAssetSourceData
   | SanityImageAsset
@@ -158,5 +272,3 @@ export type AllSanitySchemaTypes =
   | Slug
 
 export declare const internalGroqTypeReferenceTo: unique symbol
-
-
