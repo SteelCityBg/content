@@ -34,11 +34,22 @@ export const event = defineType({
     defineField({
       name: 'richText',
       type: 'array',
+      title: 'Rich Text',
       of: [
-        {type: 'block'},
+        {
+          type: 'block'
+        },
         {
           type: 'image',
-          options: {hotspot: true},
+          options: {
+            hotspot: true
+          },
+          fields: [{
+            name: 'alt',
+            type: 'string',
+            title: 'Alt Text',
+          }
+          ]
         },
       ],
     }),
