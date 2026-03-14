@@ -5,7 +5,8 @@ export const event = defineType({
   title: 'Event',
   type: 'document',
   fields: [
-    defineField({name: 'name', type: 'string'}),
+    defineField({name: 'name', title: 'Admin Name (only visible here)', type: 'string'}),
+    defineField({name: 'displayName', title: 'Event Name (what shows on the website)', type: 'string'}),
     defineField({
       name: 'eventType',
       title: 'Event Type',
@@ -32,9 +33,9 @@ export const event = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'richText',
+      name: 'extendedDescription',
       type: 'array',
-      title: 'Rich Text',
+      title: 'Extended Description (optional whatevs)',
       of: [
         {
           type: 'block'
@@ -44,14 +45,41 @@ export const event = defineType({
           options: {
             hotspot: true
           },
-          fields: [{
-            name: 'alt',
-            type: 'string',
-            title: 'Alt Text',
-          }
+          fields: [
+            defineField({ name: 'alt', type: 'string', title: 'Alt Text' }),
+            defineField({ name: 'caption', type: 'string', title: 'Caption' }),
           ]
         },
       ],
     }),
+    defineField({
+      name: 'eventPhotos',
+      type: 'array',
+      title: 'Photos from the Event',
+      of: [
+        {
+          type: 'block'
+        },
+        {
+          type: 'image',
+          options: {
+            hotspot: true
+          },
+          fields: [
+            defineField({ name: 'alt', type: 'string', title: 'Alt Text' }),
+            defineField({ name: 'caption', type: 'string', title: 'Caption' }),
+          ]
+        },
+      ],
+    }),
+  ],
+  orderings: [
+    {
+      title: 'Date, Newest First',
+      name: 'dateDesc',
+      by: [
+        { field: 'date', direction: 'desc' }
+      ]
+    },
   ],
 })

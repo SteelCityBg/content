@@ -13,5 +13,18 @@ export const venue = defineType({
     defineField({ name: 'zip', type: 'string' }),
     defineField({ name: 'map', title: 'Map URL', type: 'url' }),
     defineField({ name: 'website', title: 'Website URL', type: 'url' }),
+    defineField({
+      name: 'thumbnail',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
+      fields: [{
+        name: 'alt',
+        type: 'string',
+        title: 'Alt Text',
+      }
+      ],
+    }),
   ],
 })
