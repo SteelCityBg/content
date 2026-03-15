@@ -9,7 +9,6 @@ export const faq = defineType({
     defineField({
       name: 'answer',
       type: 'array',
-      title: 'Body',
       of: [{ type: 'block' }]
     }),
     defineField({ name: 'order', type: 'number', initialValue: 0 }),
