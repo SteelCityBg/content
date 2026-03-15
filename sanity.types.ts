@@ -12,6 +12,8 @@
  * ---------------------------------------------------------------------------------
  */
 
+export declare const internalGroqTypeReferenceTo: unique symbol
+
 // Source: schema.json
 export type SanityImageAssetReference = {
   _ref: string
@@ -81,7 +83,24 @@ export type Faq = {
   _updatedAt: string
   _rev: string
   question?: string
-  answer?: string
+  answer?: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
   order?: number
 }
 
@@ -311,5 +330,3 @@ export type AllSanitySchemaTypes =
   | SanityImageAsset
   | Geopoint
   | Slug
-
-export declare const internalGroqTypeReferenceTo: unique symbol

@@ -6,7 +6,12 @@ export const faq = defineType({
   type: 'document',
   fields: [
     defineField({ name: 'question', type: 'string' }),
-    defineField({ name: 'answer', type: 'string' }),
+    defineField({
+      name: 'answer',
+      type: 'array',
+      title: 'Body',
+      of: [{ type: 'block' }]
+    }),
     defineField({ name: 'order', type: 'number', initialValue: 0 }),
   ],
 })
