@@ -736,7 +736,21 @@
         },
         "optional": true
       },
+      "useDate": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
       "date": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "dateRange": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

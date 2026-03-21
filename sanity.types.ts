@@ -120,7 +120,9 @@ export type Event = {
   name?: string
   displayName?: string
   eventType?: 'social' | 'tournament' | 'seminar'
+  useDate?: boolean
   date?: string
+  dateRange?: string
   location?: VenueReference
   description?: string
   extendedDescription?: Array<

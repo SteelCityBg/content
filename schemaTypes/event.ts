@@ -21,11 +21,22 @@ export const event = defineType({
       },
     }),
     defineField({
+      name: 'useDate',
+      title: 'Use Date & Time',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'date',
       type: 'datetime',
       options: {
         timeStep: 15,
       },
+      hidden: ({document}) => !document?.useDate,
+    }),
+    defineField({
+      name: 'dateRange',
+      type: 'string',
+      hidden: ({document}) => !!document?.useDate,
     }),
     defineField({name: 'location', type: 'reference', to: [{type: 'venue'}]}),
     defineField({
