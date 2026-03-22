@@ -5,6 +5,9 @@ export default defineCliConfig({
     projectId: 'tcz7hq3z',
     dataset: 'production'
   },
+  schemaExtraction: {
+    workspace: 'production',
+  },
   deployment: {
     /**
      * Enable auto-updates for studios.
