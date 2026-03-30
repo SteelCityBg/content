@@ -104,6 +104,54 @@ export type Faq = {
   order?: number
 }
 
+export type EventReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'event'
+}
+
+export type EventAnnouncement = {
+  _id: string
+  _type: 'eventAnnouncement'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: string
+  subject?: string
+  event?: EventReference
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+        listItem?: 'bullet' | 'number'
+        markDefs?: Array<{
+          href?: string
+          _type: 'link'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }
+    | {
+        asset?: SanityImageAssetReference
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        alt?: string
+        caption?: string
+        _type: 'image'
+        _key: string
+      }
+  >
+}
+
 export type VenueReference = {
   _ref: string
   _type: 'reference'
@@ -320,6 +368,8 @@ export type AllSanitySchemaTypes =
   | SanityImageCrop
   | SanityImageHotspot
   | Faq
+  | EventReference
+  | EventAnnouncement
   | VenueReference
   | Event
   | Venue
