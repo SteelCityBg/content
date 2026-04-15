@@ -3,5 +3,7 @@ import {venue} from './venue'
 import {event} from './event'
 import {venueSearch} from './venueSearch'
 import {eventAnnouncement} from './eventAnnouncement'
+import {personCard} from './personCard'
+import {aboutPage} from './aboutPage'
 
-export const schemaTypes = [event, eventAnnouncement, faq, venue, venueSearch];
+export const schemaTypes = [event, eventAnnouncement, faq, venue, venueSearch, personCard, aboutPage];

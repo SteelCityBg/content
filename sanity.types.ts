@@ -15,11 +15,95 @@
 export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: schema.json
+export type AboutPage = {
+  _id: string
+  _type: 'aboutPage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  tagline?: string
+  team?: Array<
+    {
+      _key: string
+    } & PersonCard
+  >
+  players?: Array<
+    {
+      _key: string
+    } & PersonCard
+  >
+  mission?: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
+  codeOfConduct?: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
+}
+
 export type SanityImageAssetReference = {
   _ref: string
   _type: 'reference'
   _weak?: boolean
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
+
+export type PersonCard = {
+  _type: 'personCard'
+  name?: string
+  profilePic?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  bio?: string
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
 }
 
 export type VenueSearch = {
@@ -58,22 +142,6 @@ export type VenueSearch = {
       }
   >
   formPlaceholder?: string
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
 }
 
 export type Faq = {
@@ -363,10 +431,12 @@ export type Slug = {
 }
 
 export type AllSanitySchemaTypes =
+  | AboutPage
   | SanityImageAssetReference
-  | VenueSearch
+  | PersonCard
   | SanityImageCrop
   | SanityImageHotspot
+  | VenueSearch
   | Faq
   | EventReference
   | EventAnnouncement
