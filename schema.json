@@ -1600,17 +1600,27 @@
         },
         "optional": true
       },
-      "useDate": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "boolean"
-        },
-        "optional": true
-      },
       "date": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
+        },
+        "optional": true
+      },
+      "useDate": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "date"
+            },
+            {
+              "type": "string",
+              "value": "range"
+            }
+          ]
         },
         "optional": true
       },

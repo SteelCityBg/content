@@ -21,22 +21,29 @@ export const event = defineType({
       },
     }),
     defineField({
-      name: 'useDate',
-      title: 'Use Date & Time',
-      type: 'boolean',
-    }),
-    defineField({
       name: 'date',
+      title: 'Date (required for sorting)',
       type: 'datetime',
       options: {
         timeStep: 15,
       },
-      hidden: ({document}) => !document?.useDate,
+    }),
+    defineField({
+      name: 'useDate',
+      title: 'Date Display',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Display as Date & Time', value: 'date' },
+          { title: 'Display as Date Range', value: 'range' },
+        ],
+        layout: 'radio',
+      },
     }),
     defineField({
       name: 'dateRange',
+      title: 'Date Range Text',
       type: 'string',
-      hidden: ({document}) => !!document?.useDate,
     }),
     defineField({name: 'location', type: 'reference', to: [{type: 'venue'}]}),
     defineField({
