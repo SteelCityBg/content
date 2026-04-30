@@ -6,5 +6,6 @@ import {eventAnnouncement} from './eventAnnouncement'
 import {personCard} from './personCard'
 import {aboutPage} from './aboutPage'
 import {sundayUpdate} from './sundayUpdate'
+import {generalDocument} from './generalDocument'
 
-export const schemaTypes = [event, eventAnnouncement, faq, venue, venueSearch, personCard, aboutPage, sundayUpdate];
+export const schemaTypes = [event, eventAnnouncement, faq, venue, venueSearch, personCard, aboutPage, sundayUpdate, generalDocument];

@@ -22,15 +22,23 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
 
-export type SundayUpdate = {
+export type GeneralDocument = {
   _id: string
-  _type: 'sundayUpdate'
+  _type: 'generalDocument'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  visible?: boolean
+  name?: string
+  logo?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
   title?: string
-  description?: string
+  subtitle?: string
   body?: Array<
     | {
         children?: Array<{
@@ -77,6 +85,47 @@ export type SanityImageHotspot = {
   y?: number
   height?: number
   width?: number
+}
+
+export type SundayUpdate = {
+  _id: string
+  _type: 'sundayUpdate'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  visible?: boolean
+  title?: string
+  description?: string
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+        listItem?: 'bullet' | 'number'
+        markDefs?: Array<{
+          href?: string
+          _type: 'link'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }
+    | {
+        asset?: SanityImageAssetReference
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        alt?: string
+        caption?: string
+        _type: 'image'
+        _key: string
+      }
+  >
 }
 
 export type AboutPage = {
@@ -473,9 +522,10 @@ export type Slug = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | SundayUpdate
+  | GeneralDocument
   | SanityImageCrop
   | SanityImageHotspot
+  | SundayUpdate
   | AboutPage
   | PersonCard
   | VenueSearch
