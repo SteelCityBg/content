@@ -22,6 +22,13 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
 
+export type GeneralDocumentReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'generalDocument'
+}
+
 export type GeneralDocument = {
   _id: string
   _type: 'generalDocument'
@@ -68,6 +75,9 @@ export type GeneralDocument = {
         _type: 'image'
         _key: string
       }
+    | ({
+        _key: string
+      } & GeneralDocumentReference)
   >
 }
 
@@ -522,6 +532,7 @@ export type Slug = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
+  | GeneralDocumentReference
   | GeneralDocument
   | SanityImageCrop
   | SanityImageHotspot

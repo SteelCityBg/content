@@ -31,6 +31,11 @@ export const generalDocument = defineType({
             defineField({name: 'caption', type: 'string', title: 'Caption'}),
           ],
         },
+        {
+          type: 'reference',
+          title: 'Embed Document',
+          to: [{type: 'generalDocument'}],
+        },
       ],
     }),
   ],

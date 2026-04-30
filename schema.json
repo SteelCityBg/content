@@ -30,6 +30,36 @@
     }
   },
   {
+    "type": "type",
+    "name": "generalDocument.reference",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_ref": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          }
+        },
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "reference"
+          }
+        },
+        "_weak": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        }
+      },
+      "dereferencesTo": "generalDocument"
+    }
+  },
+  {
     "name": "generalDocument",
     "type": "document",
     "attributes": {
@@ -384,6 +414,21 @@
                       }
                     }
                   }
+                }
+              },
+              {
+                "type": "object",
+                "attributes": {
+                  "_key": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "inline",
+                  "name": "generalDocument.reference"
                 }
               }
             ]
