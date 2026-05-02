@@ -4,6 +4,12 @@ export const generalDocument = defineType({
   name: 'generalDocument',
   title: 'General Document',
   type: 'document',
+  preview: {
+    select: {title: 'title', name: 'name'},
+    prepare: ({title, name}: {title?: string; name?: string}) => ({
+      title: title || name,
+    }),
+  },
   fields: [
     defineField({name: 'name', title: 'Admin Name (only visible here)', type: 'string'}),
     defineField({

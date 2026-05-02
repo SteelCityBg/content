@@ -19,16 +19,10 @@ export const aboutPage = defineType({
       of: [{ type: 'personCard' }],
     }),
     defineField({
-      name: 'mission',
-      title: 'Mission Statement',
-      type: 'array',
-      of: [{ type: 'block' }],
-    }),
-    defineField({
-      name: 'codeOfConduct',
-      title: 'Code of Conduct',
-      type: 'array',
-      of: [{ type: 'block' }],
+      name: 'bodyText',
+      title: 'Body Text',
+      type: 'reference',
+      to: [{ type: 'generalDocument' }],
     }),
   ],
   preview: {
