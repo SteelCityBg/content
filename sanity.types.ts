@@ -22,62 +22,34 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
 
-export type GeneralDocumentReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'generalDocument'
-}
-
-export type GeneralDocument = {
-  _id: string
-  _type: 'generalDocument'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
+export type ComingSoonCard = {
+  _type: 'comingSoonCard'
   name?: string
-  logo?: {
+  displayName?: string
+  date?: string
+  displayDate?: string
+  location?: string
+  thumbnail?: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    alt?: string
     _type: 'image'
   }
-  title?: string
-  subtitle?: string
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>
-          text?: string
-          _type: 'span'
-          _key: string
-        }>
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-        listItem?: 'bullet' | 'number'
-        markDefs?: Array<{
-          href?: string
-          _type: 'link'
-          _key: string
-        }>
-        level?: number
-        _type: 'block'
-        _key: string
-      }
-    | {
-        asset?: SanityImageAssetReference
-        media?: unknown
-        hotspot?: SanityImageHotspot
-        crop?: SanityImageCrop
-        alt?: string
-        caption?: string
-        _type: 'image'
-        _key: string
-      }
-    | ({
-        _key: string
-      } & GeneralDocumentReference)
+  website?: string
+  description?: string
+}
+
+export type ComingSoon = {
+  _id: string
+  _type: 'comingSoon'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  events?: Array<
+    {
+      _key: string
+    } & ComingSoonCard
   >
 }
 
@@ -138,6 +110,13 @@ export type SundayUpdate = {
   >
 }
 
+export type GeneralDocumentReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'generalDocument'
+}
+
 export type AboutPage = {
   _id: string
   _type: 'aboutPage'
@@ -155,42 +134,59 @@ export type AboutPage = {
       _key: string
     } & PersonCard
   >
-  mission?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-    listItem?: 'bullet' | 'number'
-    markDefs?: Array<{
-      href?: string
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
-  codeOfConduct?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-    listItem?: 'bullet' | 'number'
-    markDefs?: Array<{
-      href?: string
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
+  bodyText?: GeneralDocumentReference
+}
+
+export type GeneralDocument = {
+  _id: string
+  _type: 'generalDocument'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: string
+  logo?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
+  title?: string
+  subtitle?: string
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+        listItem?: 'bullet' | 'number'
+        markDefs?: Array<{
+          href?: string
+          _type: 'link'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }
+    | {
+        asset?: SanityImageAssetReference
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        alt?: string
+        caption?: string
+        _type: 'image'
+        _key: string
+      }
+    | ({
+        _key: string
+      } & GeneralDocumentReference)
+  >
 }
 
 export type PersonCard = {
@@ -532,12 +528,14 @@ export type Slug = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | GeneralDocumentReference
-  | GeneralDocument
+  | ComingSoonCard
+  | ComingSoon
   | SanityImageCrop
   | SanityImageHotspot
   | SundayUpdate
+  | GeneralDocumentReference
   | AboutPage
+  | GeneralDocument
   | PersonCard
   | VenueSearch
   | Faq

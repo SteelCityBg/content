@@ -7,5 +7,19 @@ import {personCard} from './personCard'
 import {aboutPage} from './aboutPage'
 import {sundayUpdate} from './sundayUpdate'
 import {generalDocument} from './generalDocument'
+import {comingSoonCard} from './comingSoonCard'
+import {comingSoon} from './comingSoon'
 
-export const schemaTypes = [event, eventAnnouncement, faq, venue, venueSearch, personCard, aboutPage, sundayUpdate, generalDocument];
+export const schemaTypes = [
+  event,
+  eventAnnouncement,
+  faq,
+  venue,
+  venueSearch,
+  personCard,
+  aboutPage,
+  sundayUpdate,
+  generalDocument,
+  comingSoon,
+  comingSoonCard,
+];
