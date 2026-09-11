@@ -9,11 +9,13 @@ import {sundayUpdate} from './sundayUpdate'
 import {generalDocument} from './generalDocument'
 import {comingSoonCard} from './comingSoonCard'
 import {comingSoon} from './comingSoon'
+import {newsletter} from './newsletter'
 
 export const schemaTypes = [
   event,
   eventAnnouncement,
   faq,
+  newsletter,
   venue,
   venueSearch,
   personCard,
